@@ -10,7 +10,6 @@ CREATE TABLE Bar_do_Catatau (
 razao_social char(50),
 endereco char(255),
 cnpj char(20) CONSTRAINT PK_CNPJ PRIMARY KEY
-
 )
 
 alter table Bar_do_Catatau
