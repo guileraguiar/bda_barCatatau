@@ -1,25 +1,19 @@
-CREATE PROCEDURE uspUpdateFuncionario
-@matricula INT, @nome CHAR, @cpf CHAR, @endereco CHAR -- VERIFICAR PARAMÊTROS
+CREATE PROCEDURE uspUpdateFuncionario(
+    @matricula INT, @endereco CHAR(255) -- VERIFICAR PARAMÊTROS
+)
 AS
-BEGIN
-    DECLARE @matricula INT
-    DECLARE @nome CHAR
-    DECLARE @cpf CHAR
-    DECLARE @endereco CHAR
-    
-    UPDATE Funcionario SET endereco = 'Rua Albano Schmidt - N°542 - Bairro: Boa Vista - Cidade: Joinville - SC' WHERE matricula = 270299555;
-    UPDATE Funcionario SET endereco = 'Rua Horácio dos Santos Pereira Júnior - N°146 - Bairro: Parque Guarani - Cidade: Joinville - SC' WHERE matricula = 172419281;
-    UPDATE Funcionario SET endereco = 'Rua Adalberto Probst - N°745 - Bairro: Adhemar Garcia - Cidade: Joinville - SC' WHERE matricula = 105145725;
-    UPDATE Funcionario SET endereco = 'Rua Adalberto Schmalz - N°852 - Bairro: Glória - Cidade: Joinville - SC' WHERE matricula = 232410835;
-    UPDATE Funcionario SET endereco = 'Rua Adele Trapp - N°973 - Bairro: Costa e Silva - Cidade: Joinville - SC' WHERE matricula = 243847828;
-FROM Funcionario
+BEGIN   
+    UPDATE Funcionario SET endereco = @endereco WHERE matricula = @matricula;
+END
 
+EXEC uspUpdateFuncionario 
+    @matricula = 2,
+    @endereco = 'Rua Adalberto Probst - N°745 - Bairro: Adhemar Garcia - Cidade: Joinville - SC' 
 
+SELECT * FROM Funcionario
 
 
 /*
-EXEC uspUpdateFuncionario
-
 CREATE PROCEDURE CadastrarVenda
 @num_comanda INT, @nome_item CHAR(255), @preco FLOAT, @qtde_item INT, @preco_total FLOAT, dt_emissao DATE
 AS
@@ -30,7 +24,5 @@ DECLARE @preco FLOAT
 DECLARE @qtde_item INT
 DECLARE @preco_total FLOAT
 DECLARE dt_emissao DATE
-
-
 
 END
