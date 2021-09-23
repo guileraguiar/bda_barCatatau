@@ -41,6 +41,10 @@ preco_total float,
 dt_emissao date
 )
 
+alter table Comanda add cod_item int -- Adicionando a coluna
+
+alter table Comanda add CONSTRAINT FK_COD_ITEM FOREIGN key (cod_item) REFERENCES Item(cod_item) -- Tornando-a uma chave estrangeira
+
 CREATE TABLE Recebe (
 matricula integer,
 num_comanda integer,
