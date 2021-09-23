@@ -20,5 +20,5 @@ EXEC cadastrarComanda
 @dt_emissao = '2021-07-27',
 @preco_total = ''
 
-SELECT * from Comanda
-SELECT * from item
+SELECT * FROM Comanda
+SELECT * FROM item
