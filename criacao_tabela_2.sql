@@ -1,25 +1,25 @@
 create database bda_catatau
 
 CREATE TABLE Item (
+cod_item Integer IDENTITY CONSTRAINT PK_COD_ITEM PRIMARY KEY,
 nome_item char(255),
-preco float,
-cod_item Integer IDENTITY CONSTRAINT PK_COD_ITEM PRIMARY KEY
+preco float
 )
 
 CREATE TABLE Bar_do_Catatau (
+cnpj char(20) CONSTRAINT PK_CNPJ PRIMARY KEY,
 razao_social char(50),
-endereco char(255),
-cnpj char(20) CONSTRAINT PK_CNPJ PRIMARY KEY
+endereco char(255)
 )
 
 alter table Bar_do_Catatau
 add dt_abertura date
 
 CREATE TABLE Funcionario (
+matricula integer IDENTITY CONSTRAINT PK_MATRICULA PRIMARY KEY,
 nome char(125),
 endereco char(255),
 cpf char(20),
-matricula integer IDENTITY CONSTRAINT PK_MATRICULA PRIMARY KEY,
 cnpj char(20),
 CONSTRAINT FK_CNPJ FOREIGN KEY(cnpj) REFERENCES Bar_do_Catatau(cnpj)
 )
@@ -42,8 +42,7 @@ dt_emissao date
 )
 
 alter table Comanda add cod_item int -- Adicionando a coluna
-
-alter table Comanda add CONSTRAINT FK_COD_ITEM FOREIGN key (cod_item) REFERENCES Item(cod_item) -- Tornando-a uma chave estrangeira
+alter table Comanda add CONSTRAINT FK_COD_ITEM_COMANDA FOREIGN key (cod_item) REFERENCES Item(cod_item) -- Tornando-a uma chave estrangeira
 
 CREATE TABLE Recebe (
 matricula integer,

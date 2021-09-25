@@ -13,6 +13,8 @@ VALUES ('DESTILADO - STEINHAEGER - GARRAFA - 900ML - DOBLE W',79.99)
 
 SELECT * FROM item
 
+use bda_catatau
+
 INSERT Funcionario (nome , endereco, cpf, cnpj)
 VALUES ('Leandro Jorge Oliver Melo', 'Servidão Carlos Welter - N°188 – Bairro: Bom Retiro – Cidade: Joinville - SC', '578.647.199-37', '02.564.742/0001-52')
 INSERT Funcionario (nome , endereco, cpf, cnpj)

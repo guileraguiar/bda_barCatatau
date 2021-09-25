@@ -1,24 +1,21 @@
-CREATE PROCEDURE cadastrarComanda (
-    @num_comanda int, @nome_item char(255), @preco float, @qtde_item int, @preco_total float, @dt_emissao date
+ALTER PROCEDURE cadastrarComanda (
+    @cod_item int, @qtde_item int
 )
 AS
 BEGIN
-
-INSERT INTO Comanda (nome_item, preco, qtde_item, dt_emissao)
+INSERT INTO Comanda (cod_item, qtde_item, dt_emissao)
 VALUES (
-    @nome_item, @preco, @qtde_item, @dt_emissao
+    @cod_item, @qtde_item, GETDATE()
 )
 
-UPDATE Comanda SET preco_total = preco * qtde_item WHERE num_comanda = @num_comanda
+    UPDATE Comanda SET nome_item = i.nome_item, preco = i.preco from Item i where @cod_item = i.cod_item and num_comanda = @@IDENTITY
+    UPDATE Comanda SET preco_total = preco * qtde_item WHERE num_comanda = @@IDENTITY
+
 END
 
 EXEC cadastrarComanda
-@num_comanda = 2,
-@nome_item = 'WHISKY - JOHNNIE WALKER - GARRAFA - 1L - RED LABEL',
-@preco = 108.49,
-@qtde_item = 4,
-@dt_emissao = '2021-07-27',
-@preco_total = ''
+@cod_item = 3,
+@qtde_item = 10
 
-SELECT * FROM Comanda
 SELECT * FROM item
+SELECT * FROM Comanda
