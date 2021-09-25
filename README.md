@@ -1,6 +1,6 @@
 
 <h1 align="center"> 
-	BDA do Bar do Catatau
+	:beers: BDA: Bar do Catatau :beers:
 </h1>
 
-* Davi Rafael, Filipe Junks e Guilherme Aguiar
+* Feito pelos alunos: Davi Rafael, Filipe Junks e Guilherme Aguiar
